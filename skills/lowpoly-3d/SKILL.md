@@ -41,6 +41,7 @@ If `node_modules` is missing in the copy, run `npm install` there.
 - `index.html` — canvas + vignette + grain + subtitle div `#line` (Kanit) + `#black` fade layer.
 - `render.js` — `node render.js 2,5.5` → `out/still_<t>.png`; `node render.js` → `out/video_noaudio.mp4`
   (Chrome or Edge, found automatically). Then mix the sound and mux it with ffmpeg.
+- `tts.mjs` — Thai voice lines with ElevenLabs `eleven_v3` from `lines.json` → `vo/<id>.mp3` + `vo/durations.json`.
 - New props, animals, buildings, vehicles: build them in the same vocabulary and keep them in the clip's own files.
 
 ## What makes a good clip
@@ -59,8 +60,11 @@ If `node_modules` is missing in the copy, run `npm install` there.
 - Full render ≈ 15–25 min per minute of video; run it in the background. Final encode crf ~20.
 
 ## Voice, music and keys
-- Use the voice / engine / music the user gives or names. Do not pick one for them and do not ask which one unless the
-  clip needs a voice and they named none — then ask once.
+- Use the voice / engine / music the user gives or names.
+- **Thai voice with ElevenLabs: read `thai-voice.md` (next to this file) first and use `kit/tts.mjs`.** The model must be
+  `eleven_v3`; any other ElevenLabs model speaks Thai with a foreign accent. If the user gave an ElevenLabs key but no
+  voice, pick from the table in `thai-voice.md` by character (narrator → Brian, young man → Liam, woman → Sarah) — do
+  not ask.
 - API keys: use only where the user tells you the key is (a file, an environment variable). Read it in code, never
   print, log or copy it into the project, never search the disk for keys.
 - Copyrighted music: mention once that platforms may mute or claim the clip.
