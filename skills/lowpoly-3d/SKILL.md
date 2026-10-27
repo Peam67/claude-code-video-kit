@@ -67,3 +67,17 @@ If `node_modules` is missing in the copy, run `npm install` there.
 
 ## Delivery
 Give the path of the final mp4, its length and loudness, and say what you could not check (you cannot hear audio).
+
+### Credit report (after every finished clip, whenever a paid/metered API key was used)
+Read the key in code from where the user said it is; never print it or log a URL that contains it (Pixabay keys sit in
+the query string).
+- **ElevenLabs:** `GET https://api.elevenlabs.io/v1/user/subscription` with header `xi-api-key` (free, no credit used).
+  Read it **before** generating the voice and again when the clip is done. Report:
+  remaining = `character_limit - character_count`; used by this clip = the difference between the two readings;
+  clips left ≈ remaining ÷ used by this clip (round down); reset date = `next_character_count_reset_unix`; tier.
+  If the call is refused (a key made without User/read permission), say so and report only the characters you sent.
+- **Pixabay:** no credit counter — say it is free and only rate-limited.
+- **Any other service:** use its balance/usage endpoint if it has one; if not, say usage cannot be measured.
+  Never guess numbers.
+Put the report in the user's language at the end of the delivery message, e.g.
+`เครดิต ElevenLabs: เหลือ 8,120 / 10,000 ตัวอักษร · คลิปนี้ใช้ 864 · ทำได้อีกราว 9 คลิปแบบนี้ · รีเซ็ต 15 พ.ย.`

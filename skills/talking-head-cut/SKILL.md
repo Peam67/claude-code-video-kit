@@ -79,3 +79,7 @@ for all 15 lines.
 | Script says "Claude", speaker says it in Thai, whisper writes "คลอด" | low match score | expected; read `heard` before replacing a take |
 | ffmpeg 8 | `-filter_complex_script` no longer exists | the tool passes the filter inline |
 | Cutting by fixed silence threshold only (old `tighten_silence.py`) | keeps every retake, every gap the same length | use this tool when there are retakes; `tighten_silence.py` is only for clean takes |
+
+## Credit report
+This skill uses only local tools (ffmpeg, whisper.cpp). When the cut is done, say in one line that no paid API was used.
+If the same job also used a metered API key (voice, stock), report its remaining credit the way `lowpoly-3d` / `documentary-clip` describe.
