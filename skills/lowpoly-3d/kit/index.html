@@ -1,0 +1,20 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:K;font-weight:500;src:url(node_modules/@fontsource/kanit/files/kanit-thai-500-normal.woff2);unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:K;font-weight:500;src:url(node_modules/@fontsource/kanit/files/kanit-latin-500-normal.woff2);unicode-range:U+0000-00FF,U+2000-206F}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}
+#gl,#fx,#sub{position:absolute;inset:0}
+#fx{pointer-events:none;background:radial-gradient(ellipse at 50% 46%,transparent 52%,rgba(20,8,30,.55) 100%)}
+#grain{position:absolute;inset:-50px;opacity:.07;mix-blend-mode:overlay;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='256' height='256' filter='url(%23n)'/></svg>")}
+#sub{display:flex;justify-content:center;pointer-events:none}
+#line{position:absolute;top:640px;left:90px;right:90px;text-align:center;font:500 54px/1.35 K,sans-serif;color:#fff;
+  text-shadow:0 2px 3px rgba(0,0,0,.55),0 0 22px rgba(0,0,0,.35);transition:none}
+#black{position:absolute;inset:0;background:#000;opacity:0}
+</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<div id="gl"></div><div id="fx"></div><div id="grain"></div><div id="sub"><div id="line"></div></div><div id="black"></div>
+<script type="module" src="scene.js"></script>
+</body></html>
