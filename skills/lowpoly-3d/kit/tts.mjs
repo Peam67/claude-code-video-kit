@@ -2,7 +2,7 @@
 //   node tts.mjs --key-file "C:\path\key.txt"            (first sk_... in the file)
 //   node tts.mjs --key-env ELEVENLABS_API_KEY            (an environment variable)
 //   node tts.mjs --key-file ... l03 l07                  (remake only these ids)
-// lines.json: [[id, voice, text, stability?], ...]   voice = liam | brian | sarah | any voice_id
+// lines.json: [[id, voice, text, stability?], ...]   voice = liam | brian | sarah | any voice_id; empty/null = liam (default)
 // Lines already in vo/ are skipped. The key is never printed.
 import fs from 'fs'; import path from 'path'; import { execFileSync } from 'child_process';
 
@@ -23,7 +23,7 @@ const vo = path.join(ROOT, 'vo'); fs.mkdirSync(vo, { recursive: true });
 for (const [id, voice, text, stab] of JSON.parse(fs.readFileSync(path.join(ROOT, 'lines.json'), 'utf8'))) {
   const out = path.join(vo, `${id}.mp3`);
   if (only.size ? !only.has(id) : fs.existsSync(out)) continue;
-  const [vid, defStab] = VOICES[voice?.toLowerCase()] || [voice, .5];
+  const [vid, defStab] = VOICES[(voice || 'liam').toLowerCase()] || [voice, .5];
   const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${vid}?output_format=mp3_44100_128`, {
     method: 'POST', headers: { 'xi-api-key': KEY, 'Content-Type': 'application/json' },
     body: JSON.stringify({ text, model_id: MODEL, voice_settings: { stability: stab ?? defStab, similarity_boost: .75 } }),

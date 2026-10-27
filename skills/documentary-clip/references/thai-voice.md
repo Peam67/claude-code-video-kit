@@ -12,7 +12,8 @@ like a foreigner and are hard to understand. v3 reads Thai script by itself: no 
 | Woman / grandmother | Sarah | `EXAVITQu4vr4xnSDxMaL` | 0.5 |
 
 `stability` in v3: 0 = most emotion but may go off, 0.5 = natural, 1.0 = steadiest and clearest.
-Use the voice the user asks for; this table is the starting point when they only describe the character.
+**Default voice: Liam (young man).** Use it for the narrator and every line unless the user names another voice
+or a line belongs to a clearly different character (a woman → Sarah, a deep calm narrator they asked for → Brian).
 Voice Library voices need a paid plan through the API (`paid_plan_required` / `voice_not_found` on a free key).
 
 ## The call

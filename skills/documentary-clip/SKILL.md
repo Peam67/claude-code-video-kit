@@ -42,7 +42,7 @@ The motion numbers (frames, sizes, easings, transitions) are in `references/moti
    one for them; if the clip needs a narrator and they named nothing, ask once.
    - ElevenLabs: **read `references/thai-voice.md` first** (voices, settings, Thai tips). The model must be **`eleven_v3`**;
      every other ElevenLabs model speaks Thai with a foreign accent. Free accounts get **premade voices only**. With a key but
-     no voice named, pick from that table by character instead of asking. `tools/eleven_tts_lines.py script.txt out_dir --voice <id> --key-file <file>` (or the env var the user
+     no voice named, use the default **Liam (young man)** instead of asking. `tools/eleven_tts_lines.py script.txt out_dir --voice <id> --key-file <file>` (or the env var the user
      named) generates N takes per line and keeps the one whisper hears most accurately.
    - Any other engine: make 2-3 takes per line and keep the one whisper hears most accurately.
    After generating, compare each line's real duration with the slot the picture plan gives it; if a line runs long,

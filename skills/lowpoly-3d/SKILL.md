@@ -63,8 +63,7 @@ If `node_modules` is missing in the copy, run `npm install` there.
 - Use the voice / engine / music the user gives or names.
 - **Thai voice with ElevenLabs: read `thai-voice.md` (next to this file) first and use `kit/tts.mjs`.** The model must be
   `eleven_v3`; any other ElevenLabs model speaks Thai with a foreign accent. If the user gave an ElevenLabs key but no
-  voice, pick from the table in `thai-voice.md` by character (narrator → Brian, young man → Liam, woman → Sarah) — do
-  not ask.
+  voice, use the default **Liam (young man)** — do not ask; switch only for a clearly different character (woman → Sarah).
 - API keys: use only where the user tells you the key is (a file, an environment variable). Read it in code, never
   print, log or copy it into the project, never search the disk for keys.
 - Copyrighted music: mention once that platforms may mute or claim the clip.
